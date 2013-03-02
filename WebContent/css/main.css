@@ -171,6 +171,7 @@ h3{
 	border-top-left-radius: 15px;
 	margin-right: 5px;
 	text-align: center;
+	cursor: pointer;
 }
 .phrasesSettings {
 	float: left;
@@ -186,4 +187,8 @@ h3{
 	border-bottom-right-radius: 15px;
 	border-bottom-left-radius: 15px;
 	border-top-right-radius: 15px;
+	width: 100%;
+	padding: 10px;
+
 }
+
