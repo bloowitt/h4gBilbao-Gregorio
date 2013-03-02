@@ -3,21 +3,9 @@ curSelectionIdx = 0;
 timeWithoutPulsations = 0;
 frameTime = 100;
 
-iterationArray = [];
 phraseDb = localStorage.getItem(localStoragePhraseListKey);
 
 function populateIterationArray(){
-	iterationArray = [];
-	switch (iterationDepth){
-		case 0:
-			for (var elem in phraseDb){
-				iterationArray.push(elem);
-			};
-		break;
-		case 1:
-			
-		break;
-	}
 };
 
 function nextElementKeyPressed(){
@@ -25,6 +13,7 @@ function nextElementKeyPressed(){
 };
 
 function chooseThisOneKeyPressed(){
+
 };
 
 function backKeyPressed(){
