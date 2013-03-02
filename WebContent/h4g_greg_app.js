@@ -32,10 +32,10 @@ function nextElementKeyPressed(){
 function chooseThisOneKeyPressed(){
 	if (selectedCategory == -1){
 		selectedCategory = curSelectionIdx;
+		populateIterationArray();
 	}else {
 		showPhrase(phraseDb[selectedCategory].phrases[curSelectionIdx]);
 	}
-	populateIterationArray();
 };
 
 function backKeyPressed(){
@@ -112,5 +112,7 @@ function convertTextToVoiceVoz(texto){
 }
 
 function showPhrase(stringFrase){
-	
+	curSelectionIdx = 0;
+	selectedCategory = -1;
+	startWaitingState();
 };
