@@ -1,52 +1,83 @@
-appStates = {waiting : 0, category : 1, phrase : 2};
-appState = appStates.waiting;
-
+waitingState = true;
+curSelectionIdx = 0;
 timeWithoutPulsations = 0;
-frameTime = 200;
+frameTime = 100;
 
-curSection = null;
-curPhraseIdx = null;
+iterationArray = [];
+phraseDb = localStorage.getItem(localStoragePhraseListKey);
 
-function nextElement(){};
-function chooseThisOne(){};
-function back(){
-	
+function populateIterationArray(){
+	iterationArray = [];
+	switch (iterationDepth){
+		case 0:
+			for (var elem in phraseDb){
+				iterationArray.push(elem);
+			};
+		break;
+		case 1:
+			
+		break;
+	}
+};
+
+function nextElementKeyPressed(){
+	curSelectionIdx = (curSelectionIdx+1)%iterationArray.length;
+};
+
+function chooseThisOneKeyPressed(){
+	var selectedElement = iterationArray[curSelectionIdx];
+};
+
+function backKeyPressed(){
 };
 
 function keyPressed(e){
-	if(appState == appStates.waiting){
+	timeWithoutPulsations = 0;
+	// FIXME : This should only work with setup keys?
+	if(waitingState){
 		$("#waitingScreen").hide();
-		$("#mainApp").show(400);
+		$("#mainApp").slideDown(400);
+		waitingState = false;
 		return 0;
 	}
 	e = e || window.event;
 	var k = e.keyCode || e.which;
 	switch (k){
-		case 90:
-			back();
+		case localStorage.getItem(localStoragePrevKeyCodeKey):
+			backKeyPressed();
 			break;
-		case 88:
-			nextElement();
+		case localStorage.getItem(localStorageDownKeyCodeKey):
+			nextElementKeyPressed();
 			break;
-		case 67:
-			chooseThisOne();
+		case localStorage.getItem(localStorageNextKeyCodeKey):
+			chooseThisOneKeyPressed();
 			break;
 	}
 	
 };
 
-function setupApp(){
+function startWaitingState(){
+	waitingState = true;
 	$("#mainApp").hide();
 	$("#waitingScreen").show();
+};
+
+function setupApp(){
+	startWaitingState();
 	// convertTextToVoiceVoz("PRUEBA PRUEBOSA");
 };
 
 function timerTick(){
-	if (appState == appStates.waiting){
-		timeWithoutPulsations += frameTime;
+	if (!waitingState){
+		timeWithoutPulsations = timeWithoutPulsations +  frameTime;
+		if (timeWithoutPulsations >= localStorage.getItem(localStorageLowModeDelayKey)){
+			startWaitingState();
+		}
+	} else {
+		
 	}
 }
-setInterval(frameTime,timerTick);
+setInterval(timerTick,frameTime);
 
 function lanzarError(err) {
     if (err) {

@@ -22,9 +22,9 @@ function resetToDefaultSettings(){
 	localStorage.setItem(localStorageDownKeyCodeKey,67);
 	localStorage.setItem(localStorageNextKeyCodeKey,88);
 	localStorage.setItem(localStoragePrevKeyCodeKey,90);
+	localStorage.setItem(localStorageLowModeDelayKey,5000);
 	localStorage.setItem(localStorageInitKey,true);
-	localStorage.setItem(localStorageLowModeDelayKey,60000);
-}
+};
 
 if (localStorage.getItem(localStorageInitKey) == null){
 	resetToDefaultSettings();
@@ -32,11 +32,11 @@ if (localStorage.getItem(localStorageInitKey) == null){
 
 // Change when not debugging
 if (true){
-
+	resetToDefaultSettings();
 	localStorage.setItem(localStoragePhraseListKey,
 			JSON.stringify(
-					{	"ocio":["Me apetece ver la televisión","Apaga la televisión, por favor","Quiero mirar por la ventana"],
-						"higiene":["Necesito ir URGENTEMENTE al baño","Necesito ir al baño","Necesito una ducha"],
-						"sentimientos":["Estoy contento","Quiero acabar con todos los humanos"]
-					}));
+					[	{name:"ocio",phrases:["Me apetece ver la televisión","Apaga la televisión, por favor","Quiero mirar por la ventana"]},
+					 	{name:"higiene",phrases:["Necesito ir URGENTEMENTE al baño","Necesito ir al baño","Necesito una ducha"]},
+					 	{name:"sentimientos",phrases:["Estoy contento","Quiero acabar con todos los humanos"]}
+					]));
 }
