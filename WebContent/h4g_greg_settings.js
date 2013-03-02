@@ -44,3 +44,17 @@ function settingsDelPhrase(cat, numFrase){
 	phraseDb.cat.splice(numFrase,1);
 	settingsPopulate();
 };
+
+function showPhrases(){
+	$("#setupMenu").hide();
+	$("#setupTab").removeClass("active");
+	$("#phrasesMenu").show();
+	$("#phrasesTab").addClass("active");
+};
+
+function showSetup(){
+	$("#setupMenu").show();
+	$("#setupTab").addClass("active");
+	$("#phrasesMenu").hide();
+	$("#phrasesTab").removeClass("active");
+};

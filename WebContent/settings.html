@@ -4,20 +4,23 @@
 		<title>Gregorio</title>
 		<meta charset='utf-8'>
 		<link href="css/main.css" rel="stylesheet" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+		<script src="h4g_greg_commons.js" type="text/javascript"></script>
+		<script src="h4g_greg_settings.js" type="text/javascript"></script>
 </head>
 <body>
 	<div>
 		<h1>
 			Configuración
 		</h1>
-	<span class="menuConfiguracion D">
+	<span class="menuConfiguracion" id="phraseTab" onclick="showPhrases()">
 		Selección de frases
 	</span>
-	<span class="menuConfiguracion">
+	<span class="menuConfiguracion" id="setupTab" onclick="showSetup()">
 		Configuración
 	</span>
 	</div>
-	<div class="configSettings">
+	<div class="configSettings" id="setupMenu">
 		<input type="radio">Manual</input>
 		<br>
 		<input type="radio">Automático</input>
@@ -39,7 +42,7 @@
 
 
 	</div>
-	<div class="phrasesSettings">
+	<div class="phrasesSettings" id="phrasesMenu">
 		<div class="categories">
 			<h3>Frases en uso</h3>
 			<ul>

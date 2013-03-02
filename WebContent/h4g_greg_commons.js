@@ -31,7 +31,7 @@ if (localStorage.getItem(localStorageInitKey) == null){
 }
 
 // Change when not debugging
-if (true){
+if (false){
 	resetToDefaultSettings();
 	localStorage.setItem(localStoragePhraseListKey,
 			JSON.stringify(
