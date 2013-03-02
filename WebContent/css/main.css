@@ -157,3 +157,17 @@ h3{
 	padding: 0px;
 	padding-bottom: 10px;
 	border-bottom: solid 1px #333;
+}
+
+.menuConfiguracion {
+	display: block;
+	color:#fff;
+	padding-left: 10px;
+	background-color: #4682B4;
+	width: 200px;
+	float: left;
+	padding: 15px;
+}
+.phrasesSettings {
+	float: left;
+}
