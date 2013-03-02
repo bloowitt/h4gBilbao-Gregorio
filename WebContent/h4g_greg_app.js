@@ -114,5 +114,6 @@ function convertTextToVoiceVoz(texto){
 function showPhrase(stringFrase){
 	curSelectionIdx = 0;
 	selectedCategory = -1;
+	/* METER AQUI LA VOZ*/
 	startWaitingState();
 };
