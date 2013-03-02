@@ -163,7 +163,7 @@ h3{
 	display: block;
 	color:#fff;
 	padding-left: 0px;
-	background-color: #4682B4;
+	background-color: #ccc;
 	width: 200px;
 	float: left;
 	padding: 15px;
@@ -190,5 +190,9 @@ h3{
 	width: 100%;
 	padding: 10px;
 
+}
+.active {
+		background-color: #4682B4;
+		
 }
 
