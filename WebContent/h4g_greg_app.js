@@ -1,22 +1,22 @@
 appStates = {waiting : 0, category : 1, phrase : 2};
 appState = appStates.waiting;
 
-timeWithouPulsations = 0;
-var timeWithoutPulsations = 0; 
-var frameTime = 200;
-var curSection = null;
-var curPhraseIdx = null;
+timeWithoutPulsations = 0;
+frameTime = 200;
 
-if (localStorage.getItem(localStoragePhraseListKey) == null){phraseDb = {};}
-else { phraseDb = JSON.parse(localStorage.getItem(localStoragePhraseListKey));}
+curSection = null;
+curPhraseIdx = null;
 
 function nextElement(){};
 function chooseThisOne(){};
-function back(){};
+function back(){
+	
+};
 
 function keyPressed(e){
-	if(waitingState){
-		startChoosing();
+	if(appState == appStates.waiting){
+		$("#waitingScreen").hide();
+		$("#mainApp").show(400);
 		return 0;
 	}
 	e = e || window.event;
@@ -36,13 +36,28 @@ function keyPressed(e){
 };
 
 function setupApp(){
-	
+	$("#mainApp").hide();
+	$("#waitingScreen").show();
+	// convertTextToVoiceVoz("PRUEBA PRUEBOSA");
 };
 
 function timerTick(){
-	if (!waitingState){
+	if (appState == appStates.waiting){
 		timeWithoutPulsations += frameTime;
 	}
 }
 setInterval(frameTime,timerTick);
 
+function lanzarError(err) {
+    if (err) {
+        alert(err.toString());
+    }
+}
+
+
+function convertTextToVoiceVoz(texto){
+	var idioma = 'es-ES';
+	var tts = new GoogleTTS(idioma);
+	
+	tts.play(texto,idioma,lanzarError);
+}
