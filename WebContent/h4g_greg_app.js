@@ -1,22 +1,50 @@
+
+phraseDb = JSON.parse(localStorage.getItem(localStoragePhraseListKey));
+
 waitingState = true;
 curSelectionIdx = 0;
 timeWithoutPulsations = 0;
 frameTime = 100;
-
-phraseDb = localStorage.getItem(localStoragePhraseListKey);
+// This is inelegant
+selectedCategory = -1;
+iterationArray = [];
 
 function populateIterationArray(){
+	iterationArray = [];
+	if (selectedCategory == -1 ){
+		for (var elem in phraseDb){
+			iterationArray.push(phraseDb[elem].name);
+		}
+	} else {
+		for (var elem in phraseDb[curSelectionIdx].phrases){
+			iterationArray.push(phraseDb[curSelectionIdx].phrases[elem]);
+		}
+	}
+	curSelectionIdx = 0;
+	updateCentralText();
 };
 
 function nextElementKeyPressed(){
-	curSelectionIdx = (curSelectionIdx+1)%iterationArray.length;
+	curSelectionIdx = (curSelectionIdx+1) % iterationArray.length;
+	updateCentralText();
 };
 
 function chooseThisOneKeyPressed(){
-
+	if (selectedCategory == -1){
+		selectedCategory = curSelectionIdx;
+	}else {
+		showPhrase(phraseDb[selectedCategory].phrases[curSelectionIdx]);
+	}
+	populateIterationArray();
 };
 
 function backKeyPressed(){
+	selectedCategory = -1;
+	populateIterationArray();
+};
+
+function updateCentralText(){
+	$("#contentGoesHere").text(iterationArray[curSelectionIdx]);
 };
 
 function keyPressed(e){
@@ -26,18 +54,20 @@ function keyPressed(e){
 		$("#waitingScreen").hide(100);
 		$("#mainApp").slideDown(400);
 		waitingState = false;
+		selectedCategory = -1;
+		populateIterationArray();
 		return 0;
 	}
 	e = e || window.event;
 	var k = e.keyCode || e.which;
 	switch (k){
-		case localStorage.getItem(localStoragePrevKeyCodeKey):
+		case parseInt(localStorage.getItem(localStoragePrevKeyCodeKey)):
 			backKeyPressed();
 			break;
-		case localStorage.getItem(localStorageDownKeyCodeKey):
+		case parseInt(localStorage.getItem(localStorageDownKeyCodeKey)):
 			nextElementKeyPressed();
 			break;
-		case localStorage.getItem(localStorageNextKeyCodeKey):
+		case parseInt(localStorage.getItem(localStorageNextKeyCodeKey)):
 			chooseThisOneKeyPressed();
 			break;
 	}
@@ -80,3 +110,7 @@ function convertTextToVoiceVoz(texto){
 	
 	tts.play(texto,idioma,lanzarError);
 }
+
+function showPhrase(stringFrase){
+	
+};
