@@ -25,7 +25,6 @@ function nextElementKeyPressed(){
 };
 
 function chooseThisOneKeyPressed(){
-	var selectedElement = iterationArray[curSelectionIdx];
 };
 
 function backKeyPressed(){
@@ -35,7 +34,7 @@ function keyPressed(e){
 	timeWithoutPulsations = 0;
 	// FIXME : This should only work with setup keys?
 	if(waitingState){
-		$("#waitingScreen").hide();
+		$("#waitingScreen").hide(100);
 		$("#mainApp").slideDown(400);
 		waitingState = false;
 		return 0;
@@ -58,13 +57,13 @@ function keyPressed(e){
 
 function startWaitingState(){
 	waitingState = true;
-	$("#mainApp").hide();
-	$("#waitingScreen").show();
+	$("#mainApp").hide(200);
+	$("#waitingScreen").show(200);
 };
 
 function setupApp(){
 	startWaitingState();
-	// convertTextToVoiceVoz("PRUEBA PRUEBOSA");
+	
 };
 
 function timerTick(){
