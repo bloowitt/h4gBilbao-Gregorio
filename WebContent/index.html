@@ -12,23 +12,18 @@
 	<body onkeydown="keyPressed(event)" onload="setupApp()">
 	<!--Función: iniciar tts y pasar el string -->
 		<script type="text/javascript">
-	 /*   $(document).ready(function(){
+	    $(document).ready(function(){
 	        
-	        var googleTts = new window.GoogleTTS();
-	        googleTts.play('hola Gregorio', 'es-ES', function(err) {
-                if (err) {
-                    alert(err.toString());
-                }
-            });
+	      var googleTts = new window.GoogleTTS();
 	        // play
 	        $("#demoPlay").click(function() {
-	            googleTts.play('hola Gregorio', 'es-ES', function(err) {
+	            googleTts.play(window.fraseAReproducir, 'es-ES', function(err) {
 	                if (err) {
 	                    alert(err.toString());
 	                }
 	            });
 	        });
-	    });*/
+	    });
 		</script>
 	<!--Final función -->
 
@@ -37,6 +32,7 @@
 		</div>
 		
 		<div id="mainApp">
+			<button id="demoPlay" style="display:none"></button>
 		<div>
 			<div id="leftArrow" class="top selected">
 			</div>

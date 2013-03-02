@@ -115,5 +115,12 @@ function showPhrase(stringFrase){
 	curSelectionIdx = 0;
 	selectedCategory = -1;
 	/* METER AQUI LA VOZ*/
-	startWaitingState();
+	//startWaitingState();
+
+	//alert("prueba1");
+	 
+	 window.fraseAReproducir =stringFrase;
+	 $("#demoPlay").click();
+
+	 //startWaitingState();
 };
