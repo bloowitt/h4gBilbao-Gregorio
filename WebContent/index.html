@@ -7,12 +7,33 @@
 		<script src="google-tts.min.js" type="text/javascript" ></script>
 		<script src="h4g_greg_commons.js" type="text/javascript"></script>
 		<script src="h4g_greg_app.js" type="text/javascript"></script>
+
 	</head>
 	<body onkeydown="keyPressed(event)" onload="setupApp()">
+
+	<!--Función: iniciar tts y pasar el string -->
+		<script type="text/javascript">
+	    $(document).ready(function(){
+	        
+	        var googleTts = new window.GoogleTTS();
+
+	        // play
+	        $("#demoPlay").click(function() {
+	            googleTts.play('hola Gregorio', 'es-ES', function(err) {
+	                if (err) {
+	                    alert(err.toString());
+	                }
+	            });
+	        });
+	    });
+		</script>
+	<!--Final función -->
+
 		<div id="waitingScreen" class="top"> 
 			Esperando a una pulsación para empezar la selección de frases 
 		</div>
 		<div id="mainApp">
+			<button id="demoPlay">Play!</button>
 		<div>
 			<div id="leftArrow" class="top selected">
 			</div>
