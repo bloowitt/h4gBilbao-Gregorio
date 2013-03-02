@@ -162,13 +162,27 @@ h3{
 .menuConfiguracion {
 	display: block;
 	color:#fff;
-	padding-left: 10px;
+	padding-left: 0px;
 	background-color: #4682B4;
 	width: 200px;
 	float: left;
 	padding: 15px;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	margin-right: 5px;
+	text-align: center;
 }
 .phrasesSettings {
 	float: left;
 	background-color: #4682B4;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+.configSettings {
+	float: left;
+	background-color: #4682B4;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
