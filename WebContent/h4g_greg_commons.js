@@ -31,10 +31,11 @@ if (localStorage.getItem(localStorageInitKey) == null){
 }
 
 // Change when not debugging
-if (false){
+if (true){
 	resetToDefaultSettings();
 	localStorage.setItem(localStoragePhraseListKey,
 			JSON.stringify(
+						{name:"demo",phrases:["¡Hola, Gregorio!"]}
 					[	{name:"ocio",phrases:["Me apetece ver la televisión","Apaga la televisión, por favor","Quiero mirar por la ventana"]},
 					 	{name:"higiene",phrases:["Necesito ir URGENTEMENTE al baño","Necesito ir al baño","Necesito una ducha"]},
 					 	{name:"sentimientos",phrases:["Estoy contento","Quiero acabar con todos los humanos"]}
