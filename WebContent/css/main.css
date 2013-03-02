@@ -180,6 +180,7 @@ h3{
 	border-top-right-radius: 15px;
 }
 .configSettings {
+	display: none;
 	float: left;
 	background-color: #4682B4;
 	border-bottom-right-radius: 15px;
