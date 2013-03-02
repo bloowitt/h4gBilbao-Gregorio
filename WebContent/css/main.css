@@ -1,0 +1,56 @@
+body {
+	background-color:#000;
+	font-family: Verdana, Helvetica, Arial;
+}
+#leftArrow{
+	background-color: #000;
+	width:20%;
+	background-image: url('../images/back.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	float: left;
+	background-size: contain;
+}
+#rightArrow{
+	background-color: #000;
+	width: 20%;
+	background-image: url('../images/next.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	float:right;
+	background-size:contain;
+	;
+}
+#content{
+	width: 59%;
+	float: left;
+	margin:5px;
+	font-size: 50pt;
+	text-align: center;
+}
+#content p{
+
+}
+.top{
+	height: 75%;
+	color: #fff;
+}
+#bottom{
+	background-color: #000;
+	height: 25%;
+	position: absolute;
+	bottom: 0;
+	left: 20.5%;
+	width: 59%;
+	margin-bottom: 5px;
+	background-image: url('../images/down.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+#leftArrow:hover {
+	background-color: #fff;
+}
+#waitingScreen {
+	Pulsa para empezar	
+}
