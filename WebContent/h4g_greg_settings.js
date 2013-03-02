@@ -1,3 +1,39 @@
+phraseDb = JSON.parse(localStorage.getItem(localStoragePhraseListKey));
+wildPhraseArray = JSON.parse(localStorage.getItem(localStoragePhraseWildKey));
+
+function setupSettingsPage(){
+	var phraseMovingSelectContents = "";
+	for (var elem in phraseDb){
+		phraseMovingSelectContents = phraseMovingSelectContents + "<option value=" + elem + ">" + phraseDb[elem].name + "</option>";	
+	};
+	var elemCategoriesListString = "";
+	for (var elem in phraseDb){
+		var currentListElementString = "<li><span class='title'>";
+		currentListElementString += phraseDb[elem].name;
+		currentListElementString += "</span><ol>";
+		for (var elem2 in phraseDb[elem].phrases){
+			currentListElementString = currentListElementString + "<li>"; 
+			currentListElementString += "<div class='buttons'>";
+			currentListElementString += '<input type="button" value="Borrar"/>';
+			currentListElementString += '<input type="button" value="Guardar" />';
+			currentListElementString += '<select>';
+			currentListElementString += phraseMovingSelectContents;
+			currentListElementString += '</select></div>';
+			currentListElementString = currentListElementString + "<span class='phrase'>" + phraseDb[elem].phrases[elem2] + "</span>";
+			currentListElementString += "</li>";
+		}
+		currentListElementString +="</ol></li>";
+		elemCategoriesListString += currentListElementString;
+	};
+	elemCategoriesListString
+	$("#categoryList").html(elemCategoriesListString);
+	
+};
+
+function saveSettings(){
+	
+};
+
 function settingsPopulate(){
 	$('.category').remove();
 	$('#themeList').hide();
@@ -19,42 +55,17 @@ function settingsPopulate(){
 	$('#themeList').show(400);	
 };
 
-function settingsSave(){
-	localStorage.setItem(localStoragePhraseListKey, JSON.stringify(phraseDb));
-	localStorage.setItem(localStorageSelectDelayKey, $("#delayText").val());
-	localStorage.setItem(localStorageSelectDelayAutoKey,($('#autoDelay:checked').val() == 'true'));   
-	window.location = "index.html";
-};
-
-function settingsCancel(){
-	window.location="index.html";
-};
-
-function settingsAddCategory(){
-	phraseDb[$("#newCategoryName").val() ] = [];
-	settingsPopulate();
-};
-
-function settingsAddPhrase(category,phrase){
-	phraseDb.category.append(phrase);
-	settingsPopulate();
-};
-
-function settingsDelPhrase(cat, numFrase){
-	phraseDb.cat.splice(numFrase,1);
-	settingsPopulate();
-};
 
 function showPhrases(){
 	$("#setupMenu").hide();
 	$("#setupTab").removeClass("active");
 	$("#phrasesMenu").show();
-	$("#phrasesTab").addClass("active");
+	$("#phraseTab").addClass("active");
 };
 
 function showSetup(){
 	$("#setupMenu").show();
 	$("#setupTab").addClass("active");
 	$("#phrasesMenu").hide();
-	$("#phrasesTab").removeClass("active");
+	$("#phraseTab").removeClass("active");
 };

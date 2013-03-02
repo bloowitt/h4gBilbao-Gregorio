@@ -8,7 +8,7 @@
 		<script src="h4g_greg_commons.js" type="text/javascript"></script>
 		<script src="h4g_greg_settings.js" type="text/javascript"></script>
 </head>
-<body>
+<body onload="/*setupSettingsPage()*/">
 	<div>
 		<h1>
 			Configuración
@@ -21,12 +21,11 @@
 	</span>
 	</div>
 	<div class="configSettings" id="setupMenu">
-		<input type="radio">Manual</input>
+		<input type="radio" name="tiempoAuto" value="disabled" onclick="toggleTimeTextInput()"> Manual
 		<br>
-		<input type="radio">Automático</input>
+		<input type="radio" name="tiempoAuto" value="enabled" onclick="toggleTimeTextInput()"> Automático 
 		<br>
-		<span class="disabled">Tiempo que pasa entre opciónes del carrusel
-		<input type="text" /></span>
+		<span class="disabled">Tiempo que pasa entre opciónes del carrusel <input type="text" id="delayTime" /></span>
 		<br>
 		<span>Tiempo que tarda la aplicación en entrar en reposo</span>
 		<br>
@@ -34,18 +33,18 @@
 		<br>
 		Selecciona una tecla para cada uno de los valores:
 		<br>
-		Tecla 1 <input type="text">
+		Volver a empezar: <input type="text" id="backKeyField" onkeydown="" />
 		<br>
-		Tecla 2 <input type="text">
+		Siguiente elemento: <input type="text" id="NextKeyField" onkeydown="" />
 		<br>
-		Tecla 3 <input type="text">
+		Elegir elemento: <input type="text" id="ChooseKeyField" onkeydown="" />
 
 
 	</div>
 	<div class="phrasesSettings" id="phrasesMenu">
 		<div class="categories">
 			<h3>Frases en uso</h3>
-			<ul>
+			<ul id="categoryList">
 				<li>
 					<span class="title categoryTitleInicio">
 					Categoría 1
